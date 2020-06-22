@@ -7,7 +7,7 @@ const figlet = require("figlet")
 const inquirer = require("inquirer")
 
 clear()
-console.log(
+log(
   chalk.yellow(figlet.textSync("Only for test", { horizontalLayout: "full" }))
 )
 
@@ -20,10 +20,10 @@ let questions = [
   },
 ]
 inquirer.prompt(questions).then((answers) => {
-  console.log(JSON.stringify(answers, null, "  "))
+  log(JSON.stringify(answers, null, "  "))
   if (answers["confirmed"]) {
     
   } else {
-    console.log("请将本程序复制到正确文件夹后再运行一遍")
+    log("请将本程序复制到正确文件夹后再运行一遍")
   }
 })

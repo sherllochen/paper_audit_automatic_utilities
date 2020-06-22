@@ -2,9 +2,12 @@ const files = require('./lib/files');
 const clear = require('clear');
 const chalk = require('chalk');
 const figlet = require('figlet');
+const combine = require('./lib/combine');
+const split = require('./lib/split');
+const log = console.log
 
 clear();
-console.log(
+log(
     chalk.yellow(
         figlet.textSync('Automatic Utilies', { horizontalLayout: 'full' })
     )
@@ -35,7 +38,15 @@ inquirer
     },
   ])
   .then((answers) => {
-    console.log(JSON.stringify(answers, null, "  "))
+    log(JSON.stringify(answers, null, "  "))
     let selected = answers["selected"][0]
-    console.log(selected)
+    log(selected)
+    switch(selected) {
+      case '构建临时审核目录':
+        combine.process()
+        break;
+      case '拆分到原目录结构':
+        split.process()
+        break;
+    }
   })
