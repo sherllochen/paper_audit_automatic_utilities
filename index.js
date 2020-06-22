@@ -39,9 +39,3 @@ inquirer
     let selected = answers["selected"][0]
     console.log(selected)
   })
-
-// 询问用户做何操作 1是移动到审核目录，2是恢复
-
-// 用户若选择移动到审核目录，则提示用户检查是否01首图是封面，02首图是封底。
-
-
