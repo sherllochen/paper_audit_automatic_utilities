@@ -2,6 +2,7 @@ const files = require('./lib/files');
 const clear = require('clear');
 const chalk = require('chalk');
 const figlet = require('figlet');
+const inquirer = require('inquirer');
 const combine = require('./lib/combine');
 const split = require('./lib/split');
 const log = console.log
@@ -9,23 +10,24 @@ const log = console.log
 clear();
 log(
     chalk.yellow(
-        figlet.textSync('Automatic Utilies', { horizontalLayout: 'full' })
+        figlet.textSync('Automatic', { horizontalLayout: 'full' })
     )
 )
 
 inquirer
   .prompt([
     {
-      type: "checkbox",
+      type: "list",
       message: "请选择所需功能",
       name: "selected",
       choices: [
         {
           name: "构建临时审核目录",
-          checked: true,
+          value: 'combine',
         },
         {
           name: "拆分到原目录结构",
+          value: 'split',
         },
       ],
       validate: function (answer) {
@@ -39,13 +41,13 @@ inquirer
   ])
   .then((answers) => {
     log(JSON.stringify(answers, null, "  "))
-    let selected = answers["selected"][0]
+    let selected = answers["selected"]
     log(selected)
     switch(selected) {
-      case '构建临时审核目录':
+      case 'combine':
         combine.process()
         break;
-      case '拆分到原目录结构':
+      case 'split':
         split.process()
         break;
     }
