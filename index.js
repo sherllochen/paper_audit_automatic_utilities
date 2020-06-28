@@ -1,18 +1,14 @@
-const files = require('./lib/files');
-const clear = require('clear');
-const chalk = require('chalk');
-const figlet = require('figlet');
-const inquirer = require('inquirer');
-const combine = require('./lib/combine');
-const split = require('./lib/split');
-const log = console.log
+const files = require("./lib/files");
+const clear = require("clear");
+const chalk = require("chalk");
+const figlet = require("figlet");
+const inquirer = require("inquirer");
+const combine = require("./lib/combine");
+const split = require("./lib/split");
+const log = console.log;
 
 clear();
-log(
-    chalk.yellow(
-        figlet.textSync('Automatic', { horizontalLayout: 'full' })
-    )
-)
+log(chalk.yellow(figlet.textSync("Automatic", { horizontalLayout: "full" })));
 
 inquirer
   .prompt([
@@ -23,32 +19,32 @@ inquirer
       choices: [
         {
           name: "构建临时审核目录",
-          value: 'combine',
+          value: "combine",
         },
         {
           name: "拆分到原目录结构",
-          value: 'split',
+          value: "split",
         },
       ],
       validate: function (answer) {
         if (answer.length < 1) {
-          return "You must choose at least one topping."
+          return "You must choose at least one topping.";
         }
 
-        return true
+        return true;
       },
     },
   ])
   .then((answers) => {
-    log(JSON.stringify(answers, null, "  "))
-    let selected = answers["selected"]
-    log(selected)
-    switch(selected) {
-      case 'combine':
-        combine.process()
+    log(JSON.stringify(answers, null, "  "));
+    let selected = answers["selected"];
+    log(selected);
+    switch (selected) {
+      case "combine":
+        combine.process();
         break;
-      case 'split':
-        split.process()
+      case "split":
+        split.process();
         break;
     }
-  })
+  });
