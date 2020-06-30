@@ -6,5 +6,5 @@
 ```bash
 npm i -g pkg
 set-executionpolicy remotesigned # 如果是在windows10下的powersherll,则需执行此命令
-pkg ./index.js --target node12-win-x64
+pkg ./package.json --target node12-win-x64 --out-path executables
 ```
