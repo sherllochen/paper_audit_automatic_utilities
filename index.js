@@ -36,9 +36,9 @@ inquirer
     },
   ])
   .then((answers) => {
-    log(JSON.stringify(answers, null, "  "));
+    // log(JSON.stringify(answers, null, "  "));
     let selected = answers["selected"];
-    log(selected);
+    // log(selected);
     switch (selected) {
       case "combine":
         combine.process();
