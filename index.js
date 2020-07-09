@@ -5,6 +5,7 @@ const figlet = require("figlet");
 const inquirer = require("inquirer");
 const combine = require("./lib/combine");
 const split = require("./lib/split");
+const final_rename = require("./lib/final_rename");
 const log = console.log;
 
 clear();
@@ -25,6 +26,10 @@ inquirer
           name: "拆分到原目录结构",
           value: "split",
         },
+        {
+          name: "审核完成后的批量重命名",
+          value: "rename"
+        }
       ],
       validate: function (answer) {
         if (answer.length < 1) {
@@ -46,5 +51,7 @@ inquirer
       case "split":
         split.process();
         break;
+      case "rename":
+        final_rename.process()
     }
   });
