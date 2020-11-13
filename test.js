@@ -1,6 +1,6 @@
 "use strict"
 
-const files = require("./lib/files")
+const utils = require("./lib/utils")
 const clear = require("clear")
 const chalk = require("chalk")
 const figlet = require("figlet")
