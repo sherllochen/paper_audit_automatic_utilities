@@ -23,6 +23,6 @@
     "inquirer": "^7.2.0",
     "lodash": "^4.17.15",
     "md5-file": "^5.0.0",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.6"
   }
 }
